@@ -1,0 +1,23 @@
+arbitrage-bot/
+├── config/
+│   ├── config.js         # Configuration variables
+│   └── tokens.js         # Token addresses across chains
+├── src/
+│   ├── arbitrage/
+│   │   ├── executor.js   # Executes the arbitrage
+│   │   ├── finder.js     # Finds arbitrage opportunities
+│   │   └── calculator.js # Calculates profitability
+│   ├── utils/
+│   │   ├── web3.js       # Web3 utilities
+│   │   ├── bridges.js    # Bridge utilities
+│   │   └── defi.js       # DeFi protocol interactions
+│   ├── exchanges/
+│   │   ├── connectors.js # Exchange connectors
+│   │   └── swapper.js    # Token swapping utilities
+│   ├── simulation/
+│   │   ├── paperTrade.js # Paper trading simulation
+│   │   └── pnl.js        # Profit and loss calculation
+│   ├── bot.js            # Main bot logic
+│   └── index.js          # Entry point
+├── package.json
+└── README.md

@@ -1,0 +1,3 @@
+{"level":"info","message":"Starting arbitrage bot application","timestamp":"2025-03-25T10:36:00.029Z"}
+{"level":"info","message":"Executing command: paper-trade","timestamp":"2025-03-25T10:36:00.029Z"}
+{"level":"info","message":"Received SIGINT signal, shutting down","timestamp":"2025-03-25T10:36:44.744Z"}
