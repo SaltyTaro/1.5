@@ -185,8 +185,8 @@ const calculateOptimalTradeSize = (buyPrice, sellPrice, gasCostBuy, gasCostSell,
     // A common rule of thumb is when fixed costs are around 1-2% of the trade size
     const optimalTradeSize = fixedCosts / (priceDiffRatio - bridgeFeeRatio) * 50; // Multiplying by 50 means fixed costs are ~2% of trade size
     
-    // Cap the trade size at a reasonable amount (e.g., 100 ETH)
-    const cappedTradeSize = Math.min(optimalTradeSize, 100);
+    // Cap the trade size at a reasonable amount (e.g., 5 ETH for testing)
+    const cappedTradeSize = Math.min(optimalTradeSize, 5);
     
     logger.info(`Calculated optimal trade size: ${cappedTradeSize} ETH`);
     

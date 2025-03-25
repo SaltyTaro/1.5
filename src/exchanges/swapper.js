@@ -8,9 +8,15 @@ const logger = web3Utils.logger;
 // Get the best quote across all enabled exchanges
 const getBestQuote = async (network, fromToken, toToken, amount) => {
   try {
-    logger.info(`Getting best quote for ${amount} ${fromToken} to ${toToken} on ${network}`);
+    logger.info(`Getting best quote for ${ethers.utils.formatEther(amount)} ${fromToken} to ${toToken} on ${network}`);
     
     const quotes = [];
+    
+    // Get the WETH address for this network if needed
+    const wethAddress = fromToken === ethers.constants.AddressZero ? 
+                        tokens.nativeTokens[network]?.addresses?.weth || 
+                        tokens.lsdTokens.find(t => t.symbol === 'WETH')?.addresses[network] : 
+                        fromToken;
     
     // Get quotes from all enabled exchanges
     const enabledExchanges = Object.entries(config.exchanges)
@@ -24,7 +30,11 @@ const getBestQuote = async (network, fromToken, toToken, amount) => {
         const connector = ExchangeConnectorFactory.getConnector(exchange, network);
         
         if (connector.isSupported()) {
-          const quote = await connector.getQuote(fromToken, toToken, amount);
+          // Use wethAddress for ETH (zero address)
+          const quoteFromToken = fromToken === ethers.constants.AddressZero ? wethAddress : fromToken;
+          const quoteToToken = toToken === ethers.constants.AddressZero ? wethAddress : toToken;
+          
+          const quote = await connector.getQuote(quoteFromToken, quoteToToken, amount);
           quotes.push(quote);
           logger.info(`${exchange} quote: ${ethers.utils.formatEther(quote.outputAmount)} tokens`);
         }
