@@ -4,11 +4,17 @@ const { ExchangeConnectorFactory } = require('./connectors');
 const web3Utils = require('../utils/web3');
 const defiUtils = require('../utils/defi');
 const logger = web3Utils.logger;
+const tokens = require('../../config/tokens');
 
 // Get the best quote across all enabled exchanges
 const getBestQuote = async (network, fromToken, toToken, amount) => {
   try {
     logger.info(`Getting best quote for ${ethers.utils.formatEther(amount)} ${fromToken} to ${toToken} on ${network}`);
+    
+    // Check if trying to swap a token for itself
+    if (fromToken.toLowerCase() === toToken.toLowerCase()) {
+      throw new Error("Cannot swap a token for itself");
+    }
     
     const quotes = [];
     
@@ -33,6 +39,12 @@ const getBestQuote = async (network, fromToken, toToken, amount) => {
           // Use wethAddress for ETH (zero address)
           const quoteFromToken = fromToken === ethers.constants.AddressZero ? wethAddress : fromToken;
           const quoteToToken = toToken === ethers.constants.AddressZero ? wethAddress : toToken;
+          
+          // Make sure we're not trying to swap a token for itself
+          if (quoteFromToken.toLowerCase() === quoteToToken.toLowerCase()) {
+            logger.warn(`Skip getting quote from ${exchange}: Cannot swap token for itself`);
+            continue;
+          }
           
           const quote = await connector.getQuote(quoteFromToken, quoteToToken, amount);
           quotes.push(quote);
@@ -104,60 +116,80 @@ const estimateSwapGasCost = async (network, fromToken, toToken, amount) => {
   try {
     logger.info(`Estimating gas cost for swap on ${network}`);
     
-    // Get the best quote
-    const bestQuote = await getBestQuote(network, fromToken, toToken, amount);
-    
-    // Calculate minimum output with default slippage
-    const minOutputAmount = bestQuote.outputAmount.mul(10000 - 50).div(10000); // 0.5% slippage
-    
-    // Get the exchange connector
-    const connector = ExchangeConnectorFactory.getConnector(bestQuote.exchange.toLowerCase(), network);
-    
-    // Create the transaction but don't send it
-    const unsignedTx = await connector.createUnsignedSwapTransaction(
-      fromToken,
-      toToken,
-      amount,
-      minOutputAmount,
-      bestQuote.fee
-    );
-    
-    // Estimate gas
-    const provider = web3Utils.getProvider(network);
-    const gasEstimate = await provider.estimateGas(unsignedTx);
-    
-    // Get gas price
-    const gasSettings = await web3Utils.getOptimizedGasPrice(network);
-    
-    // Calculate gas cost
-    let gasCost;
-    if (gasSettings.maxFeePerGas) {
-      gasCost = gasEstimate.mul(gasSettings.maxFeePerGas);
-    } else {
-      gasCost = gasEstimate.mul(gasSettings.gasPrice);
+    // Check if trying to swap a token for itself
+    if (fromToken.toLowerCase() === toToken.toLowerCase()) {
+      throw new Error("Cannot estimate gas: attempting to swap a token for itself");
     }
     
-    logger.info(`Estimated gas cost: ${ethers.utils.formatEther(gasCost)} ETH`);
-    
-    return {
-      gasEstimate,
-      gasCost,
-      gasCostEth: ethers.utils.formatEther(gasCost),
-    };
+    // Try to get the best quote
+    try {
+      const bestQuote = await getBestQuote(network, fromToken, toToken, amount);
+      
+      // Calculate minimum output with default slippage
+      const minOutputAmount = bestQuote.outputAmount.mul(10000 - 50).div(10000); // 0.5% slippage
+      
+      // Get the exchange connector
+      const connector = ExchangeConnectorFactory.getConnector(bestQuote.exchange.toLowerCase(), network);
+      
+      try {
+        // Check if the connector has the createUnsignedSwapTransaction method
+        if (typeof connector.createUnsignedSwapTransaction !== 'function') {
+          throw new Error(`The ${bestQuote.exchange} connector does not implement createUnsignedSwapTransaction`);
+        }
+        
+        // Create the transaction but don't send it
+        const unsignedTx = await connector.createUnsignedSwapTransaction(
+          fromToken,
+          toToken,
+          amount,
+          minOutputAmount,
+          bestQuote.fee
+        );
+        
+        // Estimate gas
+        const provider = web3Utils.getProvider(network);
+        const gasEstimate = await provider.estimateGas(unsignedTx);
+        
+        // Get gas price
+        const gasSettings = await web3Utils.getOptimizedGasPrice(network);
+        
+        // Calculate gas cost
+        let gasCost;
+        if (gasSettings.maxFeePerGas) {
+          gasCost = gasEstimate.mul(gasSettings.maxFeePerGas);
+        } else {
+          gasCost = gasEstimate.mul(gasSettings.gasPrice || ethers.utils.parseUnits('30', 'gwei'));
+        }
+        
+        logger.info(`Estimated gas cost: ${ethers.utils.formatEther(gasCost)} ETH`);
+        
+        return {
+          gasEstimate,
+          gasCost,
+          gasCostEth: ethers.utils.formatEther(gasCost),
+        };
+      } catch (txError) {
+        logger.error(`Failed to create/estimate unsigned transaction: ${txError.message}`);
+        throw txError;
+      }
+    } catch (quoteError) {
+      logger.error(`Failed to get quote for gas estimation: ${quoteError.message}`);
+      throw quoteError;
+    }
   } catch (error) {
     logger.error(`Failed to estimate swap gas cost: ${error.message}`);
     
     // Return a default estimate
+    const gasLimit = ethers.BigNumber.from(config.gas.gasLimit || "500000");
+    const gasPrice = config.gas.maxFeePerGas || ethers.utils.parseUnits('30', 'gwei');
+    const gasCost = gasLimit.mul(gasPrice);
+    
+    logger.info(`Using default gas estimate: ${ethers.utils.formatEther(gasCost)} ETH`);
+    
     return {
-      gasEstimate: ethers.BigNumber.from(config.gas.gasLimit),
-      gasCost: ethers.BigNumber.from(config.gas.gasLimit).mul(
-        config.gas.maxFeePerGas || ethers.utils.parseUnits('30', 'gwei')
-      ),
-      gasCostEth: ethers.utils.formatEther(
-        ethers.BigNumber.from(config.gas.gasLimit).mul(
-          config.gas.maxFeePerGas || ethers.utils.parseUnits('30', 'gwei')
-        )
-      ),
+      gasEstimate: gasLimit,
+      gasCost: gasCost,
+      gasCostEth: ethers.utils.formatEther(gasCost),
     };
   }
 };

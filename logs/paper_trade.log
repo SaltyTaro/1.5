@@ -13,3 +13,11 @@
 {"level":"info","message":"Paper trading iteration 1/20","timestamp":"2025-03-25T15:27:06.177Z"}
 {"level":"info","message":"No arbitrage opportunities found in this iteration","timestamp":"2025-03-25T15:27:06.223Z"}
 {"level":"info","message":"Sleeping for 5 seconds before next iteration","timestamp":"2025-03-25T15:27:06.223Z"}
+{"level":"info","message":"Starting paper trading for 20 iterations","timestamp":"2025-03-25T17:03:51.775Z"}
+{"level":"info","message":"Paper trading iteration 1/20","timestamp":"2025-03-25T17:03:51.855Z"}
+{"level":"info","message":"No arbitrage opportunities found in this iteration","timestamp":"2025-03-25T17:03:51.904Z"}
+{"level":"info","message":"Sleeping for 5 seconds before next iteration","timestamp":"2025-03-25T17:03:51.904Z"}
+{"level":"info","message":"Starting paper trading for 20 iterations","timestamp":"2025-03-25T17:16:02.433Z"}
+{"level":"info","message":"Paper trading iteration 1/20","timestamp":"2025-03-25T17:16:02.525Z"}
+{"level":"info","message":"Starting paper trading for 20 iterations","timestamp":"2025-03-25T17:26:33.813Z"}
+{"level":"info","message":"Paper trading iteration 1/20","timestamp":"2025-03-25T17:26:33.890Z"}

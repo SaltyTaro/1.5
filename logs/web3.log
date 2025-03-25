@@ -886,3 +886,354 @@
 {"level":"info","message":"Arbitrage opportunity for sfrxETH between optimism and arbitrum is not profitable","timestamp":"2025-03-25T15:27:06.223Z"}
 {"level":"info","message":"Reason: Error: invalid BigNumber value (argument=\"value\", value={\"feeAmount\":{\"type\":\"BigNumber\",\"hex\":\"0x04aa3067c3f72a8e34fabb393ee71d\"},\"relayerFeePct\":\"5000000000000000\",\"quoteTimestamp\":1742916426}, code=INVALID_ARGUMENT, version=bignumber/5.7.0)","timestamp":"2025-03-25T15:27:06.223Z"}
 {"level":"info","message":"Found 0 profitable arbitrage opportunities","timestamp":"2025-03-25T15:27:06.223Z"}
+{"level":"info","message":"Initializing Web3 connections","timestamp":"2025-03-25T17:03:51.776Z"}
+{"level":"info","message":"Wallet initialized for network: ethereum","timestamp":"2025-03-25T17:03:51.822Z"}
+{"level":"info","message":"Wallet initialized for network: arbitrum","timestamp":"2025-03-25T17:03:51.836Z"}
+{"level":"info","message":"Wallet initialized for network: optimism","timestamp":"2025-03-25T17:03:51.849Z"}
+{"level":"info","message":"Wallet initialized for network: polygon","timestamp":"2025-03-25T17:03:51.851Z"}
+{"level":"info","message":"Wallet initialized for network: base","timestamp":"2025-03-25T17:03:51.854Z"}
+{"level":"info","message":"Finding arbitrage opportunities","timestamp":"2025-03-25T17:03:51.855Z"}
+{"level":"info","message":"Found 5 LSD tokens available on multiple chains","timestamp":"2025-03-25T17:03:51.856Z"}
+{"level":"info","message":"Checking stETH for arbitrage opportunities","timestamp":"2025-03-25T17:03:51.857Z"}
+{"level":"info","message":"Getting prices for stETH across chains","timestamp":"2025-03-25T17:03:51.857Z"}
+{"level":"info","message":"Getting price for token 0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84 on ethereum","timestamp":"2025-03-25T17:03:51.857Z"}
+{"level":"info","message":"stETH price on ethereum: 0.99 ETH / $2970","timestamp":"2025-03-25T17:03:51.860Z"}
+{"level":"info","message":"Getting price for token 0x5979D7b546E38E414F7E9822514be443A4800529 on arbitrum","timestamp":"2025-03-25T17:03:51.860Z"}
+{"level":"info","message":"stETH price on arbitrum: 0.995 ETH / $2985","timestamp":"2025-03-25T17:03:51.861Z"}
+{"level":"info","message":"Getting price for token 0x1F32b1c2345538c0c6f582fCB022739c4A194Ebb on optimism","timestamp":"2025-03-25T17:03:51.861Z"}
+{"level":"info","message":"stETH price on optimism: 0.987 ETH / $2961","timestamp":"2025-03-25T17:03:51.861Z"}
+{"level":"info","message":"Getting price for token 0xc3864f98f2a61A7cAeb95b039D031b4E2f55e0e9 on base","timestamp":"2025-03-25T17:03:51.861Z"}
+{"level":"info","message":"stETH price on base: 0.989 ETH / $2967","timestamp":"2025-03-25T17:03:51.861Z"}
+{"level":"info","message":"stETH price difference between ethereum (0.99 ETH) and arbitrum (0.995 ETH): 0.51%","timestamp":"2025-03-25T17:03:51.861Z"}
+{"level":"info","message":"Calculating profitability for stETH arbitrage between ethereum and arbitrum","timestamp":"2025-03-25T17:03:51.861Z"}
+{"level":"info","message":"Estimating gas cost for swap on ethereum","timestamp":"2025-03-25T17:03:51.862Z"}
+{"level":"info","message":"Getting best quote for 5000000000000000000.0 0x0000000000000000000000000000000000000000 to 0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84 on ethereum","timestamp":"2025-03-25T17:03:51.863Z"}
+{"level":"error","message":"Failed to get best quote: tokens is not defined","timestamp":"2025-03-25T17:03:51.863Z"}
+{"level":"error","message":"Failed to estimate swap gas cost: tokens is not defined","timestamp":"2025-03-25T17:03:51.863Z"}
+{"level":"info","message":"Estimating bridge fee from ethereum to arbitrum for token 0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84","timestamp":"2025-03-25T17:03:51.864Z"}
+{"level":"warn","message":"Failed to get Socket Protocol fees, trying Across: bad address checksum (argument=\"address\", value=\"0xD0D936Ab47C15eE0cE2d62602F1bE1Da148F91D5\", code=INVALID_ARGUMENT, version=address/5.7.0)","timestamp":"2025-03-25T17:03:51.873Z"}
+{"level":"info","message":"Querying Across API for suggested fees: token=0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84, destinationChainId=42161, amount=5025252525252525252525252525252525252","timestamp":"2025-03-25T17:03:51.873Z"}
+{"level":"error","message":"Error querying Across API: axios is not defined","timestamp":"2025-03-25T17:03:51.874Z"}
+{"level":"info","message":"Using fallback fee amount: 25126262626262626.262626262626262626 ETH","timestamp":"2025-03-25T17:03:51.874Z"}
+{"level":"error","message":"Failed to calculate profitability: invalid BigNumber value (argument=\"value\", value={\"feeAmount\":{\"type\":\"BigNumber\",\"hex\":\"0x04d6d2053e5c33c70efdb190cede62\"},\"relayerFeePct\":\"5000000000000000\",\"quoteTimestamp\":1742922231}, code=INVALID_ARGUMENT, version=bignumber/5.7.0)","timestamp":"2025-03-25T17:03:51.875Z"}
+{"level":"info","message":"Arbitrage opportunity for stETH between ethereum and arbitrum is not profitable","timestamp":"2025-03-25T17:03:51.875Z"}
+{"level":"info","message":"Reason: Error: invalid BigNumber value (argument=\"value\", value={\"feeAmount\":{\"type\":\"BigNumber\",\"hex\":\"0x04d6d2053e5c33c70efdb190cede62\"},\"relayerFeePct\":\"5000000000000000\",\"quoteTimestamp\":1742922231}, code=INVALID_ARGUMENT, version=bignumber/5.7.0)","timestamp":"2025-03-25T17:03:51.875Z"}
+{"level":"info","message":"stETH price difference between ethereum (0.99 ETH) and optimism (0.987 ETH): -0.30%","timestamp":"2025-03-25T17:03:51.875Z"}
+{"level":"info","message":"stETH price difference between ethereum (0.99 ETH) and base (0.989 ETH): -0.10%","timestamp":"2025-03-25T17:03:51.875Z"}
+{"level":"info","message":"stETH price difference between arbitrum (0.995 ETH) and optimism (0.987 ETH): -0.80%","timestamp":"2025-03-25T17:03:51.875Z"}
+{"level":"info","message":"Calculating profitability for stETH arbitrage between optimism and arbitrum","timestamp":"2025-03-25T17:03:51.875Z"}
+{"level":"info","message":"Estimating gas cost for swap on optimism","timestamp":"2025-03-25T17:03:51.875Z"}
+{"level":"info","message":"Getting best quote for 5000000000000000000.0 0x0000000000000000000000000000000000000000 to 0x1F32b1c2345538c0c6f582fCB022739c4A194Ebb on optimism","timestamp":"2025-03-25T17:03:51.875Z"}
+{"level":"error","message":"Failed to get best quote: tokens is not defined","timestamp":"2025-03-25T17:03:51.875Z"}
+{"level":"error","message":"Failed to estimate swap gas cost: tokens is not defined","timestamp":"2025-03-25T17:03:51.875Z"}
+{"level":"info","message":"Estimating bridge fee from optimism to arbitrum for token 0x1F32b1c2345538c0c6f582fCB022739c4A194Ebb","timestamp":"2025-03-25T17:03:51.876Z"}
+{"level":"warn","message":"Failed to get Socket Protocol fees, trying Across: bad address checksum (argument=\"address\", value=\"0x6FFe4516CABB731DE61E31fB3bcd6fF8740d9d98\", code=INVALID_ARGUMENT, version=address/5.7.0)","timestamp":"2025-03-25T17:03:51.877Z"}
+{"level":"info","message":"Querying Across API for suggested fees: token=0x1F32b1c2345538c0c6f582fCB022739c4A194Ebb, destinationChainId=42161, amount=5040526849037487335359675785207700101","timestamp":"2025-03-25T17:03:51.877Z"}
+{"level":"error","message":"Error querying Across API: axios is not defined","timestamp":"2025-03-25T17:03:51.877Z"}
+{"level":"info","message":"Using fallback fee amount: 25202634245187436.6767983789260385 ETH","timestamp":"2025-03-25T17:03:51.877Z"}
+{"level":"error","message":"Failed to calculate profitability: invalid BigNumber value (argument=\"value\", value={\"feeAmount\":{\"type\":\"BigNumber\",\"hex\":\"0x04da95f740e25180dae71f0aa25de4\"},\"relayerFeePct\":\"5000000000000000\",\"quoteTimestamp\":1742922231}, code=INVALID_ARGUMENT, version=bignumber/5.7.0)","timestamp":"2025-03-25T17:03:51.878Z"}
+{"level":"info","message":"Arbitrage opportunity for stETH between optimism and arbitrum is not profitable","timestamp":"2025-03-25T17:03:51.878Z"}
+{"level":"info","message":"Reason: Error: invalid BigNumber value (argument=\"value\", value={\"feeAmount\":{\"type\":\"BigNumber\",\"hex\":\"0x04da95f740e25180dae71f0aa25de4\"},\"relayerFeePct\":\"5000000000000000\",\"quoteTimestamp\":1742922231}, code=INVALID_ARGUMENT, version=bignumber/5.7.0)","timestamp":"2025-03-25T17:03:51.878Z"}
+{"level":"info","message":"stETH price difference between arbitrum (0.995 ETH) and base (0.989 ETH): -0.60%","timestamp":"2025-03-25T17:03:51.878Z"}
+{"level":"info","message":"Calculating profitability for stETH arbitrage between base and arbitrum","timestamp":"2025-03-25T17:03:51.878Z"}
+{"level":"info","message":"Estimating gas cost for swap on base","timestamp":"2025-03-25T17:03:51.878Z"}
+{"level":"info","message":"Getting best quote for 5000000000000000000.0 0x0000000000000000000000000000000000000000 to 0xc3864f98f2a61A7cAeb95b039D031b4E2f55e0e9 on base","timestamp":"2025-03-25T17:03:51.878Z"}
+{"level":"error","message":"Failed to get best quote: tokens is not defined","timestamp":"2025-03-25T17:03:51.878Z"}
+{"level":"error","message":"Failed to estimate swap gas cost: tokens is not defined","timestamp":"2025-03-25T17:03:51.878Z"}
+{"level":"info","message":"Estimating bridge fee from base to arbitrum for token 0xc3864f98f2a61A7cAeb95b039D031b4E2f55e0e9","timestamp":"2025-03-25T17:03:51.879Z"}
+{"level":"warn","message":"Failed to get Socket Protocol fees, trying Across: bad address checksum (argument=\"address\", value=\"0x43e26600B91C1C9F5aD42FD9C5f93f2C4E23F4A8\", code=INVALID_ARGUMENT, version=address/5.7.0)","timestamp":"2025-03-25T17:03:51.880Z"}
+{"level":"info","message":"Querying Across API for suggested fees: token=0xc3864f98f2a61A7cAeb95b039D031b4E2f55e0e9, destinationChainId=42161, amount=5030333670374115267947421638018200202","timestamp":"2025-03-25T17:03:51.881Z"}
+{"level":"error","message":"Error querying Across API: axios is not defined","timestamp":"2025-03-25T17:03:51.881Z"}
+{"level":"info","message":"Using fallback fee amount: 25151668351870576.339737108190091001 ETH","timestamp":"2025-03-25T17:03:51.881Z"}
+{"level":"error","message":"Failed to calculate profitability: invalid BigNumber value (argument=\"value\", value={\"feeAmount\":{\"type\":\"BigNumber\",\"hex\":\"0x04d812af9207e9482a71a7a67056f9\"},\"relayerFeePct\":\"5000000000000000\",\"quoteTimestamp\":1742922231}, code=INVALID_ARGUMENT, version=bignumber/5.7.0)","timestamp":"2025-03-25T17:03:51.881Z"}
+{"level":"info","message":"Arbitrage opportunity for stETH between base and arbitrum is not profitable","timestamp":"2025-03-25T17:03:51.881Z"}
+{"level":"info","message":"Reason: Error: invalid BigNumber value (argument=\"value\", value={\"feeAmount\":{\"type\":\"BigNumber\",\"hex\":\"0x04d812af9207e9482a71a7a67056f9\"},\"relayerFeePct\":\"5000000000000000\",\"quoteTimestamp\":1742922231}, code=INVALID_ARGUMENT, version=bignumber/5.7.0)","timestamp":"2025-03-25T17:03:51.882Z"}
+{"level":"info","message":"stETH price difference between optimism (0.987 ETH) and base (0.989 ETH): 0.20%","timestamp":"2025-03-25T17:03:51.882Z"}
+{"level":"info","message":"Checking rETH for arbitrage opportunities","timestamp":"2025-03-25T17:03:51.882Z"}
+{"level":"info","message":"Getting prices for rETH across chains","timestamp":"2025-03-25T17:03:51.882Z"}
+{"level":"info","message":"Getting price for token 0xae78736Cd615f374D3085123A210448E74Fc6393 on ethereum","timestamp":"2025-03-25T17:03:51.882Z"}
+{"level":"info","message":"rETH price on ethereum: 1.04 ETH / $3120","timestamp":"2025-03-25T17:03:51.882Z"}
+{"level":"info","message":"Getting price for token 0xEC70Dcb4A1EFa46b8F2D97C310C9c4790ba5ffA8 on arbitrum","timestamp":"2025-03-25T17:03:51.882Z"}
+{"level":"info","message":"rETH price on arbitrum: 1.045 ETH / $3135","timestamp":"2025-03-25T17:03:51.882Z"}
+{"level":"info","message":"Getting price for token 0x9Bcef72be871e61ED4fBbc7630889beE758eb81D on optimism","timestamp":"2025-03-25T17:03:51.882Z"}
+{"level":"info","message":"rETH price on optimism: 1.0370000000000001 ETH / $3111.0000000000005","timestamp":"2025-03-25T17:03:51.882Z"}
+{"level":"info","message":"Getting price for token 0xB6fe221Fe9EeF5aBa221c348bA20A1Bf5e73624c on base","timestamp":"2025-03-25T17:03:51.882Z"}
+{"level":"info","message":"rETH price on base: 1.0390000000000001 ETH / $3117.0000000000005","timestamp":"2025-03-25T17:03:51.882Z"}
+{"level":"info","message":"rETH price difference between ethereum (1.04 ETH) and arbitrum (1.045 ETH): 0.48%","timestamp":"2025-03-25T17:03:51.882Z"}
+{"level":"info","message":"rETH price difference between ethereum (1.04 ETH) and optimism (1.0370000000000001 ETH): -0.29%","timestamp":"2025-03-25T17:03:51.882Z"}
+{"level":"info","message":"rETH price difference between ethereum (1.04 ETH) and base (1.0390000000000001 ETH): -0.10%","timestamp":"2025-03-25T17:03:51.882Z"}
+{"level":"info","message":"rETH price difference between arbitrum (1.045 ETH) and optimism (1.0370000000000001 ETH): -0.77%","timestamp":"2025-03-25T17:03:51.882Z"}
+{"level":"info","message":"Calculating profitability for rETH arbitrage between optimism and arbitrum","timestamp":"2025-03-25T17:03:51.882Z"}
+{"level":"info","message":"Estimating gas cost for swap on optimism","timestamp":"2025-03-25T17:03:51.883Z"}
+{"level":"info","message":"Getting best quote for 5000000000000000000.0 0x0000000000000000000000000000000000000000 to 0x9Bcef72be871e61ED4fBbc7630889beE758eb81D on optimism","timestamp":"2025-03-25T17:03:51.883Z"}
+{"level":"error","message":"Failed to get best quote: tokens is not defined","timestamp":"2025-03-25T17:03:51.883Z"}
+{"level":"error","message":"Failed to estimate swap gas cost: tokens is not defined","timestamp":"2025-03-25T17:03:51.883Z"}
+{"level":"info","message":"Estimating bridge fee from optimism to arbitrum for token 0x9Bcef72be871e61ED4fBbc7630889beE758eb81D","timestamp":"2025-03-25T17:03:51.883Z"}
+{"level":"warn","message":"Failed to get Socket Protocol fees, trying Across: bad address checksum (argument=\"address\", value=\"0x6FFe4516CABB731DE61E31fB3bcd6fF8740d9d98\", code=INVALID_ARGUMENT, version=address/5.7.0)","timestamp":"2025-03-25T17:03:51.885Z"}
+{"level":"info","message":"Querying Across API for suggested fees: token=0x9Bcef72be871e61ED4fBbc7630889beE758eb81D, destinationChainId=42161, amount=4797492767598842353182953944181065266","timestamp":"2025-03-25T17:03:51.885Z"}
+{"level":"error","message":"Error querying Across API: axios is not defined","timestamp":"2025-03-25T17:03:51.885Z"}
+{"level":"info","message":"Using fallback fee amount: 23987463837994211.765914769720905326 ETH","timestamp":"2025-03-25T17:03:51.885Z"}
+{"level":"error","message":"Failed to calculate profitability: invalid BigNumber value (argument=\"value\", value={\"feeAmount\":{\"type\":\"BigNumber\",\"hex\":\"0x049eac5be71b0c0758caebef1c8e6e\"},\"relayerFeePct\":\"5000000000000000\",\"quoteTimestamp\":1742922231}, code=INVALID_ARGUMENT, version=bignumber/5.7.0)","timestamp":"2025-03-25T17:03:51.885Z"}
+{"level":"info","message":"Arbitrage opportunity for rETH between optimism and arbitrum is not profitable","timestamp":"2025-03-25T17:03:51.886Z"}
+{"level":"info","message":"Reason: Error: invalid BigNumber value (argument=\"value\", value={\"feeAmount\":{\"type\":\"BigNumber\",\"hex\":\"0x049eac5be71b0c0758caebef1c8e6e\"},\"relayerFeePct\":\"5000000000000000\",\"quoteTimestamp\":1742922231}, code=INVALID_ARGUMENT, version=bignumber/5.7.0)","timestamp":"2025-03-25T17:03:51.886Z"}
+{"level":"info","message":"rETH price difference between arbitrum (1.045 ETH) and base (1.0390000000000001 ETH): -0.57%","timestamp":"2025-03-25T17:03:51.886Z"}
+{"level":"info","message":"Calculating profitability for rETH arbitrage between base and arbitrum","timestamp":"2025-03-25T17:03:51.886Z"}
+{"level":"info","message":"Estimating gas cost for swap on base","timestamp":"2025-03-25T17:03:51.886Z"}
+{"level":"info","message":"Getting best quote for 5000000000000000000.0 0x0000000000000000000000000000000000000000 to 0xB6fe221Fe9EeF5aBa221c348bA20A1Bf5e73624c on base","timestamp":"2025-03-25T17:03:51.886Z"}
+{"level":"error","message":"Failed to get best quote: tokens is not defined","timestamp":"2025-03-25T17:03:51.886Z"}
+{"level":"error","message":"Failed to estimate swap gas cost: tokens is not defined","timestamp":"2025-03-25T17:03:51.886Z"}
+{"level":"info","message":"Estimating bridge fee from base to arbitrum for token 0xB6fe221Fe9EeF5aBa221c348bA20A1Bf5e73624c","timestamp":"2025-03-25T17:03:51.886Z"}
+{"level":"warn","message":"Failed to get Socket Protocol fees, trying Across: bad address checksum (argument=\"address\", value=\"0x43e26600B91C1C9F5aD42FD9C5f93f2C4E23F4A8\", code=INVALID_ARGUMENT, version=address/5.7.0)","timestamp":"2025-03-25T17:03:51.887Z"}
+{"level":"info","message":"Querying Across API for suggested fees: token=0xB6fe221Fe9EeF5aBa221c348bA20A1Bf5e73624c, destinationChainId=42161, amount=4788257940327237267732633269755797138","timestamp":"2025-03-25T17:03:51.887Z"}
+{"level":"error","message":"Error querying Across API: axios is not defined","timestamp":"2025-03-25T17:03:51.888Z"}
+{"level":"info","message":"Using fallback fee amount: 23941289701636186.338663166348778985 ETH","timestamp":"2025-03-25T17:03:51.888Z"}
+{"level":"error","message":"Failed to calculate profitability: invalid BigNumber value (argument=\"value\", value={\"feeAmount\":{\"type\":\"BigNumber\",\"hex\":\"0x049c658f38b57b5fd941deb9e25de9\"},\"relayerFeePct\":\"5000000000000000\",\"quoteTimestamp\":1742922231}, code=INVALID_ARGUMENT, version=bignumber/5.7.0)","timestamp":"2025-03-25T17:03:51.888Z"}
+{"level":"info","message":"Arbitrage opportunity for rETH between base and arbitrum is not profitable","timestamp":"2025-03-25T17:03:51.888Z"}
+{"level":"info","message":"Reason: Error: invalid BigNumber value (argument=\"value\", value={\"feeAmount\":{\"type\":\"BigNumber\",\"hex\":\"0x049c658f38b57b5fd941deb9e25de9\"},\"relayerFeePct\":\"5000000000000000\",\"quoteTimestamp\":1742922231}, code=INVALID_ARGUMENT, version=bignumber/5.7.0)","timestamp":"2025-03-25T17:03:51.888Z"}
+{"level":"info","message":"rETH price difference between optimism (1.0370000000000001 ETH) and base (1.0390000000000001 ETH): 0.19%","timestamp":"2025-03-25T17:03:51.888Z"}
+{"level":"info","message":"Checking cbETH for arbitrage opportunities","timestamp":"2025-03-25T17:03:51.888Z"}
+{"level":"info","message":"Getting prices for cbETH across chains","timestamp":"2025-03-25T17:03:51.888Z"}
+{"level":"info","message":"Getting price for token 0xBe9895146f7AF43049ca1c1AE358B0541Ea49704 on ethereum","timestamp":"2025-03-25T17:03:51.888Z"}
+{"level":"info","message":"cbETH price on ethereum: 1.02 ETH / $3060","timestamp":"2025-03-25T17:03:51.888Z"}
+{"level":"info","message":"Getting price for token 0x1DEBd73E752bEaF79865Fd6446b0c970EaE7732f on arbitrum","timestamp":"2025-03-25T17:03:51.888Z"}
+{"level":"info","message":"cbETH price on arbitrum: 1.025 ETH / $3074.9999999999995","timestamp":"2025-03-25T17:03:51.888Z"}
+{"level":"info","message":"Getting price for token 0xadDb6A0412DE1BA0F936DCaeb8Aaa24578dcF3B2 on optimism","timestamp":"2025-03-25T17:03:51.888Z"}
+{"level":"info","message":"cbETH price on optimism: 1.0170000000000001 ETH / $3051.0000000000005","timestamp":"2025-03-25T17:03:51.889Z"}
+{"level":"info","message":"Getting price for token 0x2Ae3F1Ec7F1F5012CFEab0185bfc7aa3cf0DEc22 on base","timestamp":"2025-03-25T17:03:51.889Z"}
+{"level":"info","message":"cbETH price on base: 1.0190000000000001 ETH / $3057.0000000000005","timestamp":"2025-03-25T17:03:51.889Z"}
+{"level":"info","message":"cbETH price difference between ethereum (1.02 ETH) and arbitrum (1.025 ETH): 0.49%","timestamp":"2025-03-25T17:03:51.889Z"}
+{"level":"info","message":"cbETH price difference between ethereum (1.02 ETH) and optimism (1.0170000000000001 ETH): -0.29%","timestamp":"2025-03-25T17:03:51.889Z"}
+{"level":"info","message":"cbETH price difference between ethereum (1.02 ETH) and base (1.0190000000000001 ETH): -0.10%","timestamp":"2025-03-25T17:03:51.889Z"}
+{"level":"info","message":"cbETH price difference between arbitrum (1.025 ETH) and optimism (1.0170000000000001 ETH): -0.78%","timestamp":"2025-03-25T17:03:51.889Z"}
+{"level":"info","message":"Calculating profitability for cbETH arbitrage between optimism and arbitrum","timestamp":"2025-03-25T17:03:51.889Z"}
+{"level":"info","message":"Estimating gas cost for swap on optimism","timestamp":"2025-03-25T17:03:51.889Z"}
+{"level":"info","message":"Getting best quote for 5000000000000000000.0 0x0000000000000000000000000000000000000000 to 0xadDb6A0412DE1BA0F936DCaeb8Aaa24578dcF3B2 on optimism","timestamp":"2025-03-25T17:03:51.889Z"}
+{"level":"error","message":"Failed to get best quote: tokens is not defined","timestamp":"2025-03-25T17:03:51.889Z"}
+{"level":"error","message":"Failed to estimate swap gas cost: tokens is not defined","timestamp":"2025-03-25T17:03:51.889Z"}
+{"level":"info","message":"Estimating bridge fee from optimism to arbitrum for token 0xadDb6A0412DE1BA0F936DCaeb8Aaa24578dcF3B2","timestamp":"2025-03-25T17:03:51.890Z"}
+{"level":"warn","message":"Failed to get Socket Protocol fees, trying Across: bad address checksum (argument=\"address\", value=\"0x6FFe4516CABB731DE61E31fB3bcd6fF8740d9d98\", code=INVALID_ARGUMENT, version=address/5.7.0)","timestamp":"2025-03-25T17:03:51.891Z"}
+{"level":"info","message":"Querying Across API for suggested fees: token=0xadDb6A0412DE1BA0F936DCaeb8Aaa24578dcF3B2, destinationChainId=42161, amount=4891838741396263039150566234389081696","timestamp":"2025-03-25T17:03:51.891Z"}
+{"level":"error","message":"Error querying Across API: axios is not defined","timestamp":"2025-03-25T17:03:51.891Z"}
+{"level":"info","message":"Using fallback fee amount: 24459193706981315.195752831171945408 ETH","timestamp":"2025-03-25T17:03:51.891Z"}
+{"level":"error","message":"Failed to calculate profitability: invalid BigNumber value (argument=\"value\", value={\"feeAmount\":{\"type\":\"BigNumber\",\"hex\":\"0x04b5ee6d51180e06581ba86af3e3c0\"},\"relayerFeePct\":\"5000000000000000\",\"quoteTimestamp\":1742922231}, code=INVALID_ARGUMENT, version=bignumber/5.7.0)","timestamp":"2025-03-25T17:03:51.891Z"}
+{"level":"info","message":"Arbitrage opportunity for cbETH between optimism and arbitrum is not profitable","timestamp":"2025-03-25T17:03:51.891Z"}
+{"level":"info","message":"Reason: Error: invalid BigNumber value (argument=\"value\", value={\"feeAmount\":{\"type\":\"BigNumber\",\"hex\":\"0x04b5ee6d51180e06581ba86af3e3c0\"},\"relayerFeePct\":\"5000000000000000\",\"quoteTimestamp\":1742922231}, code=INVALID_ARGUMENT, version=bignumber/5.7.0)","timestamp":"2025-03-25T17:03:51.891Z"}
+{"level":"info","message":"cbETH price difference between arbitrum (1.025 ETH) and base (1.0190000000000001 ETH): -0.59%","timestamp":"2025-03-25T17:03:51.891Z"}
+{"level":"info","message":"Calculating profitability for cbETH arbitrage between base and arbitrum","timestamp":"2025-03-25T17:03:51.891Z"}
+{"level":"info","message":"Estimating gas cost for swap on base","timestamp":"2025-03-25T17:03:51.891Z"}
+{"level":"info","message":"Getting best quote for 5000000000000000000.0 0x0000000000000000000000000000000000000000 to 0x2Ae3F1Ec7F1F5012CFEab0185bfc7aa3cf0DEc22 on base","timestamp":"2025-03-25T17:03:51.892Z"}
+{"level":"error","message":"Failed to get best quote: tokens is not defined","timestamp":"2025-03-25T17:03:51.892Z"}
+{"level":"error","message":"Failed to estimate swap gas cost: tokens is not defined","timestamp":"2025-03-25T17:03:51.892Z"}
+{"level":"info","message":"Estimating bridge fee from base to arbitrum for token 0x2Ae3F1Ec7F1F5012CFEab0185bfc7aa3cf0DEc22","timestamp":"2025-03-25T17:03:51.892Z"}
+{"level":"warn","message":"Failed to get Socket Protocol fees, trying Across: bad address checksum (argument=\"address\", value=\"0x43e26600B91C1C9F5aD42FD9C5f93f2C4E23F4A8\", code=INVALID_ARGUMENT, version=address/5.7.0)","timestamp":"2025-03-25T17:03:51.893Z"}
+{"level":"info","message":"Querying Across API for suggested fees: token=0x2Ae3F1Ec7F1F5012CFEab0185bfc7aa3cf0DEc22, destinationChainId=42161, amount=4882237487733071159741169015400278730","timestamp":"2025-03-25T17:03:51.893Z"}
+{"level":"error","message":"Error querying Across API: axios is not defined","timestamp":"2025-03-25T17:03:51.894Z"}
+{"level":"info","message":"Using fallback fee amount: 24411187438665355.798705845077001393 ETH","timestamp":"2025-03-25T17:03:51.894Z"}
+{"level":"error","message":"Failed to calculate profitability: invalid BigNumber value (argument=\"value\", value={\"feeAmount\":{\"type\":\"BigNumber\",\"hex\":\"0x04b39080b2a977c3921ff01b23c4b1\"},\"relayerFeePct\":\"5000000000000000\",\"quoteTimestamp\":1742922231}, code=INVALID_ARGUMENT, version=bignumber/5.7.0)","timestamp":"2025-03-25T17:03:51.894Z"}
+{"level":"info","message":"Arbitrage opportunity for cbETH between base and arbitrum is not profitable","timestamp":"2025-03-25T17:03:51.894Z"}
+{"level":"info","message":"Reason: Error: invalid BigNumber value (argument=\"value\", value={\"feeAmount\":{\"type\":\"BigNumber\",\"hex\":\"0x04b39080b2a977c3921ff01b23c4b1\"},\"relayerFeePct\":\"5000000000000000\",\"quoteTimestamp\":1742922231}, code=INVALID_ARGUMENT, version=bignumber/5.7.0)","timestamp":"2025-03-25T17:03:51.894Z"}
+{"level":"info","message":"cbETH price difference between optimism (1.0170000000000001 ETH) and base (1.0190000000000001 ETH): 0.20%","timestamp":"2025-03-25T17:03:51.894Z"}
+{"level":"info","message":"Checking frxETH for arbitrage opportunities","timestamp":"2025-03-25T17:03:51.894Z"}
+{"level":"info","message":"Getting prices for frxETH across chains","timestamp":"2025-03-25T17:03:51.894Z"}
+{"level":"info","message":"Getting price for token 0x5E8422345238F34275888049021821E8E08CAa1f on ethereum","timestamp":"2025-03-25T17:03:51.894Z"}
+{"level":"info","message":"frxETH price on ethereum: 0.995 ETH / $2985","timestamp":"2025-03-25T17:03:51.894Z"}
+{"level":"info","message":"Getting price for token 0x178412e79c25968a32e89b11f63B33F733D3725F on arbitrum","timestamp":"2025-03-25T17:03:51.894Z"}
+{"level":"info","message":"frxETH price on arbitrum: 1 ETH / $3000","timestamp":"2025-03-25T17:03:51.894Z"}
+{"level":"info","message":"Getting price for token 0x6806411765Af15Bddd26f8f544A34cC40cb9838B on optimism","timestamp":"2025-03-25T17:03:51.894Z"}
+{"level":"info","message":"frxETH price on optimism: 0.992 ETH / $2976","timestamp":"2025-03-25T17:03:51.895Z"}
+{"level":"info","message":"frxETH price difference between ethereum (0.995 ETH) and arbitrum (1 ETH): 0.50%","timestamp":"2025-03-25T17:03:51.895Z"}
+{"level":"info","message":"Calculating profitability for frxETH arbitrage between ethereum and arbitrum","timestamp":"2025-03-25T17:03:51.895Z"}
+{"level":"info","message":"Estimating gas cost for swap on ethereum","timestamp":"2025-03-25T17:03:51.895Z"}
+{"level":"info","message":"Getting best quote for 5000000000000000000.0 0x0000000000000000000000000000000000000000 to 0x5E8422345238F34275888049021821E8E08CAa1f on ethereum","timestamp":"2025-03-25T17:03:51.895Z"}
+{"level":"error","message":"Failed to get best quote: tokens is not defined","timestamp":"2025-03-25T17:03:51.895Z"}
+{"level":"error","message":"Failed to estimate swap gas cost: tokens is not defined","timestamp":"2025-03-25T17:03:51.895Z"}
+{"level":"info","message":"Estimating bridge fee from ethereum to arbitrum for token 0x5E8422345238F34275888049021821E8E08CAa1f","timestamp":"2025-03-25T17:03:51.895Z"}
+{"level":"warn","message":"Failed to get Socket Protocol fees, trying Across: bad address checksum (argument=\"address\", value=\"0xD0D936Ab47C15eE0cE2d62602F1bE1Da148F91D5\", code=INVALID_ARGUMENT, version=address/5.7.0)","timestamp":"2025-03-25T17:03:51.897Z"}
+{"level":"info","message":"Querying Across API for suggested fees: token=0x5E8422345238F34275888049021821E8E08CAa1f, destinationChainId=42161, amount=5000000000000000000000000000000000000","timestamp":"2025-03-25T17:03:51.897Z"}
+{"level":"error","message":"Error querying Across API: axios is not defined","timestamp":"2025-03-25T17:03:51.897Z"}
+{"level":"info","message":"Using fallback fee amount: 25000000000000000.0 ETH","timestamp":"2025-03-25T17:03:51.897Z"}
+{"level":"error","message":"Failed to calculate profitability: invalid BigNumber value (argument=\"value\", value={\"feeAmount\":{\"type\":\"BigNumber\",\"hex\":\"0x04d0985cb1d3608ae1e3fa00000000\"},\"relayerFeePct\":\"5000000000000000\",\"quoteTimestamp\":1742922231}, code=INVALID_ARGUMENT, version=bignumber/5.7.0)","timestamp":"2025-03-25T17:03:51.897Z"}
+{"level":"info","message":"Arbitrage opportunity for frxETH between ethereum and arbitrum is not profitable","timestamp":"2025-03-25T17:03:51.897Z"}
+{"level":"info","message":"Reason: Error: invalid BigNumber value (argument=\"value\", value={\"feeAmount\":{\"type\":\"BigNumber\",\"hex\":\"0x04d0985cb1d3608ae1e3fa00000000\"},\"relayerFeePct\":\"5000000000000000\",\"quoteTimestamp\":1742922231}, code=INVALID_ARGUMENT, version=bignumber/5.7.0)","timestamp":"2025-03-25T17:03:51.897Z"}
+{"level":"info","message":"frxETH price difference between ethereum (0.995 ETH) and optimism (0.992 ETH): -0.30%","timestamp":"2025-03-25T17:03:51.898Z"}
+{"level":"info","message":"frxETH price difference between arbitrum (1 ETH) and optimism (0.992 ETH): -0.80%","timestamp":"2025-03-25T17:03:51.898Z"}
+{"level":"info","message":"Calculating profitability for frxETH arbitrage between optimism and arbitrum","timestamp":"2025-03-25T17:03:51.898Z"}
+{"level":"info","message":"Estimating gas cost for swap on optimism","timestamp":"2025-03-25T17:03:51.898Z"}
+{"level":"info","message":"Getting best quote for 5000000000000000000.0 0x0000000000000000000000000000000000000000 to 0x6806411765Af15Bddd26f8f544A34cC40cb9838B on optimism","timestamp":"2025-03-25T17:03:51.898Z"}
+{"level":"error","message":"Failed to get best quote: tokens is not defined","timestamp":"2025-03-25T17:03:51.898Z"}
+{"level":"error","message":"Failed to estimate swap gas cost: tokens is not defined","timestamp":"2025-03-25T17:03:51.898Z"}
+{"level":"info","message":"Estimating bridge fee from optimism to arbitrum for token 0x6806411765Af15Bddd26f8f544A34cC40cb9838B","timestamp":"2025-03-25T17:03:51.899Z"}
+{"level":"warn","message":"Failed to get Socket Protocol fees, trying Across: bad address checksum (argument=\"address\", value=\"0x6FFe4516CABB731DE61E31fB3bcd6fF8740d9d98\", code=INVALID_ARGUMENT, version=address/5.7.0)","timestamp":"2025-03-25T17:03:51.900Z"}
+{"level":"info","message":"Querying Across API for suggested fees: token=0x6806411765Af15Bddd26f8f544A34cC40cb9838B, destinationChainId=42161, amount=5015120967741935483870967741935483870","timestamp":"2025-03-25T17:03:51.900Z"}
+{"level":"error","message":"Error querying Across API: axios is not defined","timestamp":"2025-03-25T17:03:51.900Z"}
+{"level":"info","message":"Using fallback fee amount: 25075604838709677.419354838709677419 ETH","timestamp":"2025-03-25T17:03:51.901Z"}
+{"level":"error","message":"Failed to calculate profitability: invalid BigNumber value (argument=\"value\", value={\"feeAmount\":{\"type\":\"BigNumber\",\"hex\":\"0x04d452a11a9f1cf6a8404766b5ad6b\"},\"relayerFeePct\":\"5000000000000000\",\"quoteTimestamp\":1742922231}, code=INVALID_ARGUMENT, version=bignumber/5.7.0)","timestamp":"2025-03-25T17:03:51.901Z"}
+{"level":"info","message":"Arbitrage opportunity for frxETH between optimism and arbitrum is not profitable","timestamp":"2025-03-25T17:03:51.901Z"}
+{"level":"info","message":"Reason: Error: invalid BigNumber value (argument=\"value\", value={\"feeAmount\":{\"type\":\"BigNumber\",\"hex\":\"0x04d452a11a9f1cf6a8404766b5ad6b\"},\"relayerFeePct\":\"5000000000000000\",\"quoteTimestamp\":1742922231}, code=INVALID_ARGUMENT, version=bignumber/5.7.0)","timestamp":"2025-03-25T17:03:51.901Z"}
+{"level":"info","message":"Checking sfrxETH for arbitrage opportunities","timestamp":"2025-03-25T17:03:51.901Z"}
+{"level":"info","message":"Getting prices for sfrxETH across chains","timestamp":"2025-03-25T17:03:51.901Z"}
+{"level":"info","message":"Getting price for token 0xac3e018457b222d93114458476f3e3416abbe38f on ethereum","timestamp":"2025-03-25T17:03:51.901Z"}
+{"level":"info","message":"sfrxETH price on ethereum: 1.03 ETH / $3090","timestamp":"2025-03-25T17:03:51.901Z"}
+{"level":"info","message":"Getting price for token 0x95aB45875cFFdba1E5f451B950bC2E42c0053f39 on arbitrum","timestamp":"2025-03-25T17:03:51.901Z"}
+{"level":"info","message":"sfrxETH price on arbitrum: 1.035 ETH / $3104.9999999999995","timestamp":"2025-03-25T17:03:51.901Z"}
+{"level":"info","message":"Getting price for token 0x484c2D6e3cDd945a8B2DF735e079178C1036578c on optimism","timestamp":"2025-03-25T17:03:51.901Z"}
+{"level":"info","message":"sfrxETH price on optimism: 1.0270000000000001 ETH / $3081.0000000000005","timestamp":"2025-03-25T17:03:51.902Z"}
+{"level":"info","message":"sfrxETH price difference between ethereum (1.03 ETH) and arbitrum (1.035 ETH): 0.49%","timestamp":"2025-03-25T17:03:51.902Z"}
+{"level":"info","message":"sfrxETH price difference between ethereum (1.03 ETH) and optimism (1.0270000000000001 ETH): -0.29%","timestamp":"2025-03-25T17:03:51.902Z"}
+{"level":"info","message":"sfrxETH price difference between arbitrum (1.035 ETH) and optimism (1.0270000000000001 ETH): -0.77%","timestamp":"2025-03-25T17:03:51.902Z"}
+{"level":"info","message":"Calculating profitability for sfrxETH arbitrage between optimism and arbitrum","timestamp":"2025-03-25T17:03:51.902Z"}
+{"level":"info","message":"Estimating gas cost for swap on optimism","timestamp":"2025-03-25T17:03:51.902Z"}
+{"level":"info","message":"Getting best quote for 5000000000000000000.0 0x0000000000000000000000000000000000000000 to 0x484c2D6e3cDd945a8B2DF735e079178C1036578c on optimism","timestamp":"2025-03-25T17:03:51.902Z"}
+{"level":"error","message":"Failed to get best quote: tokens is not defined","timestamp":"2025-03-25T17:03:51.902Z"}
+{"level":"error","message":"Failed to estimate swap gas cost: tokens is not defined","timestamp":"2025-03-25T17:03:51.902Z"}
+{"level":"info","message":"Estimating bridge fee from optimism to arbitrum for token 0x484c2D6e3cDd945a8B2DF735e079178C1036578c","timestamp":"2025-03-25T17:03:51.902Z"}
+{"level":"warn","message":"Failed to get Socket Protocol fees, trying Across: bad address checksum (argument=\"address\", value=\"0x6FFe4516CABB731DE61E31fB3bcd6fF8740d9d98\", code=INVALID_ARGUMENT, version=address/5.7.0)","timestamp":"2025-03-25T17:03:51.903Z"}
+{"level":"info","message":"Querying Across API for suggested fees: token=0x484c2D6e3cDd945a8B2DF735e079178C1036578c, destinationChainId=42161, amount=4844206426484907025880581647039237986","timestamp":"2025-03-25T17:03:51.903Z"}
+{"level":"error","message":"Error querying Across API: axios is not defined","timestamp":"2025-03-25T17:03:51.903Z"}
+{"level":"info","message":"Using fallback fee amount: 24221032132424535.129402908235196189 ETH","timestamp":"2025-03-25T17:03:51.903Z"}
+{"level":"error","message":"Failed to calculate profitability: invalid BigNumber value (argument=\"value\", value={\"feeAmount\":{\"type\":\"BigNumber\",\"hex\":\"0x04aa3067c3f72a8e34fabb393ee71d\"},\"relayerFeePct\":\"5000000000000000\",\"quoteTimestamp\":1742922231}, code=INVALID_ARGUMENT, version=bignumber/5.7.0)","timestamp":"2025-03-25T17:03:51.904Z"}
+{"level":"info","message":"Arbitrage opportunity for sfrxETH between optimism and arbitrum is not profitable","timestamp":"2025-03-25T17:03:51.904Z"}
+{"level":"info","message":"Reason: Error: invalid BigNumber value (argument=\"value\", value={\"feeAmount\":{\"type\":\"BigNumber\",\"hex\":\"0x04aa3067c3f72a8e34fabb393ee71d\"},\"relayerFeePct\":\"5000000000000000\",\"quoteTimestamp\":1742922231}, code=INVALID_ARGUMENT, version=bignumber/5.7.0)","timestamp":"2025-03-25T17:03:51.904Z"}
+{"level":"info","message":"Found 0 profitable arbitrage opportunities","timestamp":"2025-03-25T17:03:51.904Z"}
+{"level":"info","message":"Initializing Web3 connections","timestamp":"2025-03-25T17:16:02.434Z"}
+{"level":"info","message":"Wallet initialized for network: ethereum","timestamp":"2025-03-25T17:16:02.479Z"}
+{"level":"info","message":"Wallet initialized for network: arbitrum","timestamp":"2025-03-25T17:16:02.495Z"}
+{"level":"info","message":"Wallet initialized for network: optimism","timestamp":"2025-03-25T17:16:02.508Z"}
+{"level":"info","message":"Wallet initialized for network: polygon","timestamp":"2025-03-25T17:16:02.521Z"}
+{"level":"info","message":"Wallet initialized for network: base","timestamp":"2025-03-25T17:16:02.524Z"}
+{"level":"info","message":"Finding arbitrage opportunities","timestamp":"2025-03-25T17:16:02.526Z"}
+{"level":"info","message":"Found 5 LSD tokens available on multiple chains","timestamp":"2025-03-25T17:16:02.527Z"}
+{"level":"info","message":"Checking stETH for arbitrage opportunities","timestamp":"2025-03-25T17:16:02.527Z"}
+{"level":"info","message":"Getting prices for stETH across chains","timestamp":"2025-03-25T17:16:02.528Z"}
+{"level":"info","message":"Getting price for token 0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84 on ethereum","timestamp":"2025-03-25T17:16:02.528Z"}
+{"level":"info","message":"stETH price on ethereum: 0.99 ETH / $2970","timestamp":"2025-03-25T17:16:02.531Z"}
+{"level":"info","message":"Getting price for token 0x5979D7b546E38E414F7E9822514be443A4800529 on arbitrum","timestamp":"2025-03-25T17:16:02.532Z"}
+{"level":"info","message":"stETH price on arbitrum: 0.995 ETH / $2985","timestamp":"2025-03-25T17:16:02.533Z"}
+{"level":"info","message":"Getting price for token 0x1F32b1c2345538c0c6f582fCB022739c4A194Ebb on optimism","timestamp":"2025-03-25T17:16:02.533Z"}
+{"level":"info","message":"stETH price on optimism: 0.987 ETH / $2961","timestamp":"2025-03-25T17:16:02.533Z"}
+{"level":"info","message":"Getting price for token 0xc3864f98f2a61A7cAeb95b039D031b4E2f55e0e9 on base","timestamp":"2025-03-25T17:16:02.533Z"}
+{"level":"info","message":"stETH price on base: 0.989 ETH / $2967","timestamp":"2025-03-25T17:16:02.533Z"}
+{"level":"info","message":"stETH price difference between ethereum (0.99 ETH) and arbitrum (0.995 ETH): 0.51%","timestamp":"2025-03-25T17:16:02.533Z"}
+{"level":"info","message":"Calculating profitability for stETH arbitrage between ethereum and arbitrum","timestamp":"2025-03-25T17:16:02.534Z"}
+{"level":"info","message":"Estimating gas cost for swap on ethereum","timestamp":"2025-03-25T17:16:02.535Z"}
+{"level":"info","message":"Getting best quote for 5000000000000000000.0 0x0000000000000000000000000000000000000000 to 0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84 on ethereum","timestamp":"2025-03-25T17:16:02.536Z"}
+{"level":"info","message":"Checking quotes from: uniswap, sushiswap, curve, balancer","timestamp":"2025-03-25T17:16:02.536Z"}
+{"level":"info","message":"Getting Uniswap quote for 5000000000000000000000000000000000000 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2 to 0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84","timestamp":"2025-03-25T17:16:02.543Z"}
+{"level":"error","message":"Failed to get Uniswap quote: No liquidity found on Uniswap for this token pair","timestamp":"2025-03-25T17:16:10.935Z"}
+{"level":"warn","message":"Failed to get quote from uniswap: No liquidity found on Uniswap for this token pair","timestamp":"2025-03-25T17:16:10.936Z"}
+{"level":"info","message":"Getting Sushiswap quote for 5000000000000000000000000000000000000 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2 to 0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84","timestamp":"2025-03-25T17:16:10.938Z"}
+{"level":"info","message":"sushiswap quote: 0.008799520592478296 tokens","timestamp":"2025-03-25T17:16:13.469Z"}
+{"level":"warn","message":"Failed to get quote from curve: Curve connector not implemented yet","timestamp":"2025-03-25T17:16:13.469Z"}
+{"level":"warn","message":"Failed to get quote from balancer: Balancer connector not implemented yet","timestamp":"2025-03-25T17:16:13.469Z"}
+{"level":"info","message":"Best quote from Sushiswap: 0.008799520592478296 tokens","timestamp":"2025-03-25T17:16:13.470Z"}
+{"level":"error","message":"Failed to estimate swap gas cost: connector.createUnsignedSwapTransaction is not a function","timestamp":"2025-03-25T17:16:13.472Z"}
+{"level":"info","message":"Estimating bridge fee from ethereum to arbitrum for token 0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84","timestamp":"2025-03-25T17:16:13.473Z"}
+{"level":"warn","message":"Failed to get Socket Protocol fees, trying Across: bad address checksum (argument=\"address\", value=\"0xD0D936Ab47C15eE0cE2d62602F1bE1Da148F91D5\", code=INVALID_ARGUMENT, version=address/5.7.0)","timestamp":"2025-03-25T17:16:13.475Z"}
+{"level":"info","message":"Querying Across API for suggested fees: token=0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84, destinationChainId=42161, amount=5025252525252525252525252525252525252","timestamp":"2025-03-25T17:16:13.475Z"}
+{"level":"error","message":"Error querying Across API: Across API request failed: Request failed with status code 400","timestamp":"2025-03-25T17:16:14.296Z"}
+{"level":"info","message":"Using fallback fee amount: 25126262626262626.262626262626262626 ETH","timestamp":"2025-03-25T17:16:14.298Z"}
+{"level":"info","message":"Estimating gas cost for swap on arbitrum","timestamp":"2025-03-25T17:16:14.301Z"}
+{"level":"info","message":"Getting best quote for 5000126262626262626.262626262626262626 0x5979D7b546E38E414F7E9822514be443A4800529 to 0x0000000000000000000000000000000000000000 on arbitrum","timestamp":"2025-03-25T17:16:14.302Z"}
+{"level":"info","message":"Checking quotes from: uniswap, sushiswap, curve, balancer","timestamp":"2025-03-25T17:16:14.302Z"}
+{"level":"info","message":"Getting Uniswap quote for 5000126262626262626262626262626262626 0x5979D7b546E38E414F7E9822514be443A4800529 to 0x5979D7b546E38E414F7E9822514be443A4800529","timestamp":"2025-03-25T17:16:14.306Z"}
+{"level":"error","message":"Failed to get Uniswap quote: No liquidity found on Uniswap for this token pair","timestamp":"2025-03-25T17:16:16.211Z"}
+{"level":"warn","message":"Failed to get quote from uniswap: No liquidity found on Uniswap for this token pair","timestamp":"2025-03-25T17:16:16.211Z"}
+{"level":"info","message":"Getting Sushiswap quote for 5000126262626262626262626262626262626 0x5979D7b546E38E414F7E9822514be443A4800529 to 0x5979D7b546E38E414F7E9822514be443A4800529","timestamp":"2025-03-25T17:16:16.215Z"}
+{"level":"error","message":"Failed to get Sushiswap quote: call revert exception; VM Exception while processing transaction: reverted with reason string \"UniswapV2Library: IDENTICAL_ADDRESSES\" [ See: https://links.ethers.org/v5-errors-CALL_EXCEPTION ] (method=\"getAmountsOut(uint256,address[])\", data=\"0x08c379a000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000025556e697377617056324c6962726172793a204944454e544943414c5f414444524553534553000000000000000000000000000000000000000000000000000000\", errorArgs=[\"UniswapV2Library: IDENTICAL_ADDRESSES\"], errorName=\"Error\", errorSignature=\"Error(string)\", reason=\"UniswapV2Library: IDENTICAL_ADDRESSES\", code=CALL_EXCEPTION, version=abi/5.7.0)","timestamp":"2025-03-25T17:16:16.826Z"}
+{"level":"warn","message":"Failed to get quote from sushiswap: call revert exception; VM Exception while processing transaction: reverted with reason string \"UniswapV2Library: IDENTICAL_ADDRESSES\" [ See: https://links.ethers.org/v5-errors-CALL_EXCEPTION ] (method=\"getAmountsOut(uint256,address[])\", data=\"0x08c379a000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000025556e697377617056324c6962726172793a204944454e544943414c5f414444524553534553000000000000000000000000000000000000000000000000000000\", errorArgs=[\"UniswapV2Library: IDENTICAL_ADDRESSES\"], errorName=\"Error\", errorSignature=\"Error(string)\", reason=\"UniswapV2Library: IDENTICAL_ADDRESSES\", code=CALL_EXCEPTION, version=abi/5.7.0)","timestamp":"2025-03-25T17:16:16.826Z"}
+{"level":"warn","message":"Failed to get quote from curve: Curve connector not implemented yet","timestamp":"2025-03-25T17:16:16.827Z"}
+{"level":"warn","message":"Failed to get quote from balancer: Balancer connector not implemented yet","timestamp":"2025-03-25T17:16:16.827Z"}
+{"level":"error","message":"Failed to get best quote: No quotes available from any exchange","timestamp":"2025-03-25T17:16:16.827Z"}
+{"level":"error","message":"Failed to estimate swap gas cost: No quotes available from any exchange","timestamp":"2025-03-25T17:16:16.827Z"}
+{"level":"info","message":"Estimating bridge fee from arbitrum to ethereum for token 0x0000000000000000000000000000000000000000","timestamp":"2025-03-25T17:16:16.827Z"}
+{"level":"warn","message":"Failed to get Socket Protocol fees, trying Across: bad address checksum (argument=\"address\", value=\"0x2E312166A5bB0B9169e923C385a45Ab4AEf0EaEb\", code=INVALID_ARGUMENT, version=address/5.7.0)","timestamp":"2025-03-25T17:16:16.829Z"}
+{"level":"info","message":"Querying Across API for suggested fees: token=0x0000000000000000000000000000000000000000, destinationChainId=1, amount=4975125631313131313131313131313131312","timestamp":"2025-03-25T17:16:16.829Z"}
+{"level":"error","message":"Error querying Across API: Across API request failed: Request failed with status code 400","timestamp":"2025-03-25T17:16:17.535Z"}
+{"level":"info","message":"Using fallback fee amount: 24875628156565656.565656565656565656 ETH","timestamp":"2025-03-25T17:16:17.536Z"}
+{"level":"info","message":"Price difference not enough to cover variable costs, using minimum trade size","timestamp":"2025-03-25T17:16:17.537Z"}
+{"level":"info","message":"Arbitrage opportunity for stETH between ethereum and arbitrum is not profitable","timestamp":"2025-03-25T17:16:17.538Z"}
+{"level":"info","message":"Reason: Not enough profit after costs","timestamp":"2025-03-25T17:16:17.538Z"}
+{"level":"info","message":"stETH price difference between ethereum (0.99 ETH) and optimism (0.987 ETH): -0.30%","timestamp":"2025-03-25T17:16:17.538Z"}
+{"level":"info","message":"stETH price difference between ethereum (0.99 ETH) and base (0.989 ETH): -0.10%","timestamp":"2025-03-25T17:16:17.538Z"}
+{"level":"info","message":"stETH price difference between arbitrum (0.995 ETH) and optimism (0.987 ETH): -0.80%","timestamp":"2025-03-25T17:16:17.538Z"}
+{"level":"info","message":"Calculating profitability for stETH arbitrage between optimism and arbitrum","timestamp":"2025-03-25T17:16:17.538Z"}
+{"level":"info","message":"Estimating gas cost for swap on optimism","timestamp":"2025-03-25T17:16:17.539Z"}
+{"level":"info","message":"Getting best quote for 5000000000000000000.0 0x0000000000000000000000000000000000000000 to 0x1F32b1c2345538c0c6f582fCB022739c4A194Ebb on optimism","timestamp":"2025-03-25T17:16:17.539Z"}
+{"level":"info","message":"Checking quotes from: uniswap, sushiswap, curve, balancer","timestamp":"2025-03-25T17:16:17.539Z"}
+{"level":"info","message":"Getting Uniswap quote for 5000000000000000000000000000000000000 0x4200000000000000000000000000000000000006 to 0x1F32b1c2345538c0c6f582fCB022739c4A194Ebb","timestamp":"2025-03-25T17:16:17.540Z"}
+{"level":"info","message":"Initializing Web3 connections","timestamp":"2025-03-25T17:26:33.814Z"}
+{"level":"info","message":"Wallet initialized for network: ethereum","timestamp":"2025-03-25T17:26:33.858Z"}
+{"level":"info","message":"Wallet initialized for network: arbitrum","timestamp":"2025-03-25T17:26:33.872Z"}
+{"level":"info","message":"Wallet initialized for network: optimism","timestamp":"2025-03-25T17:26:33.886Z"}
+{"level":"info","message":"Wallet initialized for network: polygon","timestamp":"2025-03-25T17:26:33.888Z"}
+{"level":"info","message":"Wallet initialized for network: base","timestamp":"2025-03-25T17:26:33.890Z"}
+{"level":"info","message":"Finding arbitrage opportunities","timestamp":"2025-03-25T17:26:33.891Z"}
+{"level":"info","message":"Found 5 LSD tokens available on multiple chains","timestamp":"2025-03-25T17:26:33.891Z"}
+{"level":"info","message":"Checking stETH for arbitrage opportunities","timestamp":"2025-03-25T17:26:33.891Z"}
+{"level":"info","message":"Getting prices for stETH across chains","timestamp":"2025-03-25T17:26:33.892Z"}
+{"level":"info","message":"Getting price for token 0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84 on ethereum","timestamp":"2025-03-25T17:26:33.892Z"}
+{"level":"info","message":"stETH price on ethereum: 0.99 ETH / $2970","timestamp":"2025-03-25T17:26:33.894Z"}
+{"level":"info","message":"Getting price for token 0x5979D7b546E38E414F7E9822514be443A4800529 on arbitrum","timestamp":"2025-03-25T17:26:33.895Z"}
+{"level":"info","message":"stETH price on arbitrum: 0.995 ETH / $2985","timestamp":"2025-03-25T17:26:33.895Z"}
+{"level":"info","message":"Getting price for token 0x1F32b1c2345538c0c6f582fCB022739c4A194Ebb on optimism","timestamp":"2025-03-25T17:26:33.896Z"}
+{"level":"info","message":"stETH price on optimism: 0.987 ETH / $2961","timestamp":"2025-03-25T17:26:33.896Z"}
+{"level":"info","message":"Getting price for token 0xc3864f98f2a61A7cAeb95b039D031b4E2f55e0e9 on base","timestamp":"2025-03-25T17:26:33.896Z"}
+{"level":"info","message":"stETH price on base: 0.989 ETH / $2967","timestamp":"2025-03-25T17:26:33.896Z"}
+{"level":"info","message":"stETH price difference between ethereum (0.99 ETH) and arbitrum (0.995 ETH): 0.51%","timestamp":"2025-03-25T17:26:33.896Z"}
+{"level":"info","message":"Calculating profitability for stETH arbitrage between ethereum and arbitrum","timestamp":"2025-03-25T17:26:33.897Z"}
+{"level":"info","message":"Estimating gas cost for swap on ethereum","timestamp":"2025-03-25T17:26:33.897Z"}
+{"level":"info","message":"Getting best quote for 5000000000000000000.0 0x0000000000000000000000000000000000000000 to 0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84 on ethereum","timestamp":"2025-03-25T17:26:33.898Z"}
+{"level":"info","message":"Checking quotes from: uniswap, sushiswap, curve, balancer","timestamp":"2025-03-25T17:26:33.899Z"}
+{"level":"info","message":"Getting Uniswap quote for 5000000000000000000000000000000000000 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2 to 0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84","timestamp":"2025-03-25T17:26:33.906Z"}
+{"level":"error","message":"Failed to get Uniswap quote: No liquidity found on Uniswap for this token pair","timestamp":"2025-03-25T17:26:49.061Z"}
+{"level":"warn","message":"Failed to get quote from uniswap: No liquidity found on Uniswap for this token pair","timestamp":"2025-03-25T17:26:49.061Z"}
+{"level":"info","message":"Getting Sushiswap quote for 5000000000000000000000000000000000000 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2 to 0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84","timestamp":"2025-03-25T17:26:49.064Z"}
+{"level":"info","message":"sushiswap quote: 0.008799520592478296 tokens","timestamp":"2025-03-25T17:26:51.339Z"}
+{"level":"warn","message":"Failed to get quote from curve: Curve connector not implemented yet","timestamp":"2025-03-25T17:26:51.340Z"}
+{"level":"warn","message":"Failed to get quote from balancer: Balancer connector not implemented yet","timestamp":"2025-03-25T17:26:51.340Z"}
+{"level":"info","message":"Best quote from Sushiswap: 0.008799520592478296 tokens","timestamp":"2025-03-25T17:26:51.341Z"}
+{"level":"info","message":"Creating unsigned Sushiswap transaction for 5000000000000000000000000000000000000 0x0000000000000000000000000000000000000000 to 0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84","timestamp":"2025-03-25T17:26:51.343Z"}
+{"level":"error","message":"Failed to create/estimate unsigned transaction: insufficient funds for intrinsic transaction cost [ See: https://links.ethers.org/v5-errors-INSUFFICIENT_FUNDS ] (error={\"reason\":\"processing response error\",\"code\":\"SERVER_ERROR\",\"body\":\"{\\\"jsonrpc\\\":\\\"2.0\\\",\\\"id\\\":52,\\\"error\\\":{\\\"code\\\":-32000,\\\"message\\\":\\\"failed with 35964810 gas: insufficient funds for gas * price + value: address 0x0000000000000000000000000000000000000000 have 14058879337739734002290 want 5000000000000000000000000000000000000\\\"}}\\n\",\"error\":{\"code\":-32000},\"requestBody\":\"{\\\"method\\\":\\\"eth_estimateGas\\\",\\\"params\\\":[{\\\"value\\\":\\\"0x3c2f7086aed236c807a1b5000000000\\\",\\\"to\\\":\\\"0xd9e1ce17f2641f24ae83637ab66a2cca9c378b9f\\\",\\\"data\\\":\\\"0x7ff36ab5000000000000000000000000000000000000000000000000001f1b1a0d9ce4800000000000000000000000000000000000000000000000000000000000000080000000000000000000000000c2d7cf95645d33006175b78989035c7c9061d3f90000000000000000000000000000000000000000000000000000000067e2e9b30000000000000000000000000000000000000000000000000000000000000002000000000000000000000000c02aaa39b223fe8d0a0e5c4f27ead9083c756cc2000000000000000000000000ae7ab96520de3a18e5e111b5eaab095312d7fe84\\\"}],\\\"id\\\":52,\\\"jsonrpc\\\":\\\"2.0\\\"}\",\"requestMethod\":\"POST\",\"url\":\"https://mainnet.infura.io/v3/96e943808ac44940bcf2b2e94e169e47\"}, method=\"estimateGas\", transaction={\"to\":\"0xd9e1cE17f2641f24aE83637ab66a2cca9C378B9F\",\"value\":{\"type\":\"BigNumber\",\"hex\":\"0x03c2f7086aed236c807a1b5000000000\"},\"data\":\"0x7ff36ab5000000000000000000000000000000000000000000000000001f1b1a0d9ce4800000000000000000000000000000000000000000000000000000000000000080000000000000000000000000c2d7cf95645d33006175b78989035c7c9061d3f90000000000000000000000000000000000000000000000000000000067e2e9b30000000000000000000000000000000000000000000000000000000000000002000000000000000000000000c02aaa39b223fe8d0a0e5c4f27ead9083c756cc2000000000000000000000000ae7ab96520de3a18e5e111b5eaab095312d7fe84\",\"accessList\":null}, code=INSUFFICIENT_FUNDS, version=providers/5.7.2)","timestamp":"2025-03-25T17:26:55.809Z"}
+{"level":"error","message":"Failed to get quote for gas estimation: insufficient funds for intrinsic transaction cost [ See: https://links.ethers.org/v5-errors-INSUFFICIENT_FUNDS ] (error={\"reason\":\"processing response error\",\"code\":\"SERVER_ERROR\",\"body\":\"{\\\"jsonrpc\\\":\\\"2.0\\\",\\\"id\\\":52,\\\"error\\\":{\\\"code\\\":-32000,\\\"message\\\":\\\"failed with 35964810 gas: insufficient funds for gas * price + value: address 0x0000000000000000000000000000000000000000 have 14058879337739734002290 want 5000000000000000000000000000000000000\\\"}}\\n\",\"error\":{\"code\":-32000},\"requestBody\":\"{\\\"method\\\":\\\"eth_estimateGas\\\",\\\"params\\\":[{\\\"value\\\":\\\"0x3c2f7086aed236c807a1b5000000000\\\",\\\"to\\\":\\\"0xd9e1ce17f2641f24ae83637ab66a2cca9c378b9f\\\",\\\"data\\\":\\\"0x7ff36ab5000000000000000000000000000000000000000000000000001f1b1a0d9ce4800000000000000000000000000000000000000000000000000000000000000080000000000000000000000000c2d7cf95645d33006175b78989035c7c9061d3f90000000000000000000000000000000000000000000000000000000067e2e9b30000000000000000000000000000000000000000000000000000000000000002000000000000000000000000c02aaa39b223fe8d0a0e5c4f27ead9083c756cc2000000000000000000000000ae7ab96520de3a18e5e111b5eaab095312d7fe84\\\"}],\\\"id\\\":52,\\\"jsonrpc\\\":\\\"2.0\\\"}\",\"requestMethod\":\"POST\",\"url\":\"https://mainnet.infura.io/v3/96e943808ac44940bcf2b2e94e169e47\"}, method=\"estimateGas\", transaction={\"to\":\"0xd9e1cE17f2641f24aE83637ab66a2cca9C378B9F\",\"value\":{\"type\":\"BigNumber\",\"hex\":\"0x03c2f7086aed236c807a1b5000000000\"},\"data\":\"0x7ff36ab5000000000000000000000000000000000000000000000000001f1b1a0d9ce4800000000000000000000000000000000000000000000000000000000000000080000000000000000000000000c2d7cf95645d33006175b78989035c7c9061d3f90000000000000000000000000000000000000000000000000000000067e2e9b30000000000000000000000000000000000000000000000000000000000000002000000000000000000000000c02aaa39b223fe8d0a0e5c4f27ead9083c756cc2000000000000000000000000ae7ab96520de3a18e5e111b5eaab095312d7fe84\",\"accessList\":null}, code=INSUFFICIENT_FUNDS, version=providers/5.7.2)","timestamp":"2025-03-25T17:26:55.809Z"}
+{"level":"error","message":"Failed to estimate swap gas cost: insufficient funds for intrinsic transaction cost [ See: https://links.ethers.org/v5-errors-INSUFFICIENT_FUNDS ] (error={\"reason\":\"processing response error\",\"code\":\"SERVER_ERROR\",\"body\":\"{\\\"jsonrpc\\\":\\\"2.0\\\",\\\"id\\\":52,\\\"error\\\":{\\\"code\\\":-32000,\\\"message\\\":\\\"failed with 35964810 gas: insufficient funds for gas * price + value: address 0x0000000000000000000000000000000000000000 have 14058879337739734002290 want 5000000000000000000000000000000000000\\\"}}\\n\",\"error\":{\"code\":-32000},\"requestBody\":\"{\\\"method\\\":\\\"eth_estimateGas\\\",\\\"params\\\":[{\\\"value\\\":\\\"0x3c2f7086aed236c807a1b5000000000\\\",\\\"to\\\":\\\"0xd9e1ce17f2641f24ae83637ab66a2cca9c378b9f\\\",\\\"data\\\":\\\"0x7ff36ab5000000000000000000000000000000000000000000000000001f1b1a0d9ce4800000000000000000000000000000000000000000000000000000000000000080000000000000000000000000c2d7cf95645d33006175b78989035c7c9061d3f90000000000000000000000000000000000000000000000000000000067e2e9b30000000000000000000000000000000000000000000000000000000000000002000000000000000000000000c02aaa39b223fe8d0a0e5c4f27ead9083c756cc2000000000000000000000000ae7ab96520de3a18e5e111b5eaab095312d7fe84\\\"}],\\\"id\\\":52,\\\"jsonrpc\\\":\\\"2.0\\\"}\",\"requestMethod\":\"POST\",\"url\":\"https://mainnet.infura.io/v3/96e943808ac44940bcf2b2e94e169e47\"}, method=\"estimateGas\", transaction={\"to\":\"0xd9e1cE17f2641f24aE83637ab66a2cca9C378B9F\",\"value\":{\"type\":\"BigNumber\",\"hex\":\"0x03c2f7086aed236c807a1b5000000000\"},\"data\":\"0x7ff36ab5000000000000000000000000000000000000000000000000001f1b1a0d9ce4800000000000000000000000000000000000000000000000000000000000000080000000000000000000000000c2d7cf95645d33006175b78989035c7c9061d3f90000000000000000000000000000000000000000000000000000000067e2e9b30000000000000000000000000000000000000000000000000000000000000002000000000000000000000000c02aaa39b223fe8d0a0e5c4f27ead9083c756cc2000000000000000000000000ae7ab96520de3a18e5e111b5eaab095312d7fe84\",\"accessList\":null}, code=INSUFFICIENT_FUNDS, version=providers/5.7.2)","timestamp":"2025-03-25T17:26:55.809Z"}
+{"level":"info","message":"Using default gas estimate: 0.015 ETH","timestamp":"2025-03-25T17:26:55.809Z"}
+{"level":"info","message":"Estimating bridge fee from ethereum to arbitrum for token 0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84","timestamp":"2025-03-25T17:26:55.813Z"}
+{"level":"warn","message":"Failed to get Socket Protocol fees, trying Across: call revert exception [ See: https://links.ethers.org/v5-errors-CALL_EXCEPTION ] (method=\"getBestRoute(address,uint256,uint32)\", data=\"0x\", errorArgs=null, errorName=null, errorSignature=null, reason=null, code=CALL_EXCEPTION, version=abi/5.7.0)","timestamp":"2025-03-25T17:27:02.740Z"}
+{"level":"info","message":"Querying Across API for suggested fees: token=0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84, destinationChainId=42161, amount=5025252525252525252525252525252525252","timestamp":"2025-03-25T17:27:02.741Z"}
+{"level":"error","message":"Across API request failed: Request failed with status code 400","timestamp":"2025-03-25T17:27:03.372Z"}
+{"level":"error","message":"API URL: https://across.to/api/suggested-fees?token=0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84&destinationChainId=42161&amount=5025252525252525252525252525252525252&originChainId=1","timestamp":"2025-03-25T17:27:03.373Z"}
+{"level":"error","message":"Status: 400","timestamp":"2025-03-25T17:27:03.373Z"}
+{"level":"error","message":"Data: {\"type\":\"AcrossApiError\",\"code\":\"INVALID_PARAM\",\"status\":400,\"message\":\"Unsupported token on given origin chain\",\"param\":\"inputTokenAddress\"}","timestamp":"2025-03-25T17:27:03.373Z"}
+{"level":"error","message":"Error querying Across API: Across API request failed: Request failed with status code 400","timestamp":"2025-03-25T17:27:03.374Z"}
+{"level":"info","message":"Using fallback fee amount: 25126262626262626.262626262626262626 ETH","timestamp":"2025-03-25T17:27:03.376Z"}
+{"level":"info","message":"Estimating gas cost for swap on arbitrum","timestamp":"2025-03-25T17:27:03.378Z"}
+{"level":"info","message":"Getting best quote for 5000126262626262626.262626262626262626 0x5979D7b546E38E414F7E9822514be443A4800529 to 0x0000000000000000000000000000000000000000 on arbitrum","timestamp":"2025-03-25T17:27:03.378Z"}
+{"level":"info","message":"Checking quotes from: uniswap, sushiswap, curve, balancer","timestamp":"2025-03-25T17:27:03.379Z"}
+{"level":"warn","message":"Skip getting quote from uniswap: Cannot swap token for itself","timestamp":"2025-03-25T17:27:03.382Z"}
+{"level":"warn","message":"Skip getting quote from sushiswap: Cannot swap token for itself","timestamp":"2025-03-25T17:27:03.388Z"}
+{"level":"warn","message":"Skip getting quote from curve: Cannot swap token for itself","timestamp":"2025-03-25T17:27:03.388Z"}
+{"level":"warn","message":"Skip getting quote from balancer: Cannot swap token for itself","timestamp":"2025-03-25T17:27:03.388Z"}
+{"level":"error","message":"Failed to get best quote: No quotes available from any exchange","timestamp":"2025-03-25T17:27:03.388Z"}
+{"level":"error","message":"Failed to get quote for gas estimation: No quotes available from any exchange","timestamp":"2025-03-25T17:27:03.389Z"}
+{"level":"error","message":"Failed to estimate swap gas cost: No quotes available from any exchange","timestamp":"2025-03-25T17:27:03.389Z"}
+{"level":"info","message":"Using default gas estimate: 0.015 ETH","timestamp":"2025-03-25T17:27:03.390Z"}
+{"level":"info","message":"Estimating bridge fee from arbitrum to ethereum for token 0x0000000000000000000000000000000000000000","timestamp":"2025-03-25T17:27:03.391Z"}
+{"level":"warn","message":"Failed to get Socket Protocol fees, trying Across: bad address checksum (argument=\"address\", value=\"0x2E312166A5bB0B9169e923C385a45Ab4AEf0EaEb\", code=INVALID_ARGUMENT, version=address/5.7.0)","timestamp":"2025-03-25T17:27:03.395Z"}
+{"level":"info","message":"Querying Across API for suggested fees: token=0x0000000000000000000000000000000000000000, destinationChainId=1, amount=4975125631313131313131313131313131312","timestamp":"2025-03-25T17:27:03.395Z"}
+{"level":"error","message":"Across API request failed: Request failed with status code 400","timestamp":"2025-03-25T17:27:03.737Z"}
+{"level":"error","message":"API URL: https://across.to/api/suggested-fees?token=0x0000000000000000000000000000000000000000&destinationChainId=1&amount=4975125631313131313131313131313131312&originChainId=42161","timestamp":"2025-03-25T17:27:03.738Z"}
+{"level":"error","message":"Status: 400","timestamp":"2025-03-25T17:27:03.738Z"}
+{"level":"error","message":"Data: {\"type\":\"AcrossApiError\",\"code\":\"INVALID_PARAM\",\"status\":400,\"message\":\"Unsupported token on given origin chain\",\"param\":\"inputTokenAddress\"}","timestamp":"2025-03-25T17:27:03.738Z"}
+{"level":"error","message":"Error querying Across API: Across API request failed: Request failed with status code 400","timestamp":"2025-03-25T17:27:03.739Z"}
+{"level":"info","message":"Using fallback fee amount: 24875628156565656.565656565656565656 ETH","timestamp":"2025-03-25T17:27:03.740Z"}
+{"level":"info","message":"Price difference not enough to cover variable costs, using minimum trade size","timestamp":"2025-03-25T17:27:03.744Z"}
+{"level":"info","message":"Arbitrage opportunity for stETH between ethereum and arbitrum is not profitable","timestamp":"2025-03-25T17:27:03.748Z"}
+{"level":"info","message":"Reason: Not enough profit after costs","timestamp":"2025-03-25T17:27:03.748Z"}
+{"level":"info","message":"stETH price difference between ethereum (0.99 ETH) and optimism (0.987 ETH): -0.30%","timestamp":"2025-03-25T17:27:03.748Z"}
+{"level":"info","message":"stETH price difference between ethereum (0.99 ETH) and base (0.989 ETH): -0.10%","timestamp":"2025-03-25T17:27:03.749Z"}
+{"level":"info","message":"stETH price difference between arbitrum (0.995 ETH) and optimism (0.987 ETH): -0.80%","timestamp":"2025-03-25T17:27:03.749Z"}
+{"level":"info","message":"Calculating profitability for stETH arbitrage between optimism and arbitrum","timestamp":"2025-03-25T17:27:03.749Z"}
+{"level":"info","message":"Estimating gas cost for swap on optimism","timestamp":"2025-03-25T17:27:03.750Z"}
+{"level":"info","message":"Getting best quote for 5000000000000000000.0 0x0000000000000000000000000000000000000000 to 0x1F32b1c2345538c0c6f582fCB022739c4A194Ebb on optimism","timestamp":"2025-03-25T17:27:03.750Z"}
+{"level":"info","message":"Checking quotes from: uniswap, sushiswap, curve, balancer","timestamp":"2025-03-25T17:27:03.751Z"}
+{"level":"info","message":"Getting Uniswap quote for 5000000000000000000000000000000000000 0x4200000000000000000000000000000000000006 to 0x1F32b1c2345538c0c6f582fCB022739c4A194Ebb","timestamp":"2025-03-25T17:27:03.755Z"}

@@ -3,6 +3,7 @@ const config = require('../../config/config');
 const tokens = require('../../config/tokens');
 const web3Utils = require('./web3');
 const logger = web3Utils.logger;
+const axios = require('axios');
 
 // ABI for Socket Protocol contracts
 const SOCKET_ABI = [
@@ -13,9 +14,9 @@ const SOCKET_ABI = [
 
 // Socket contract addresses
 const SOCKET_ADDRESSES = {
-  ethereum: '0xD0D936Ab47C15eE0cE2d62602F1bE1Da148F91D5',
+  ethereum: '0xd0d936ab47c15ee0ce2d62602f1be1da148f91d5', // Changed to lowercase
   arbitrum: '0x2E312166A5bB0B9169e923C385a45Ab4AEf0EaEb',
-  optimism: '0x6FFe4516CABB731DE61E31fB3bcd6fF8740d9d98',
+  optimism: '0x6ffe4516cabb731de61e31fb3bcd6ff8740d9d98', // Changed to lowercase
   polygon: '0x03C4AD107D4c797227Eddc0B6D6Dfaa5e3b3933e',
   base: '0x43e26600B91C1C9F5aD42FD9C5f93f2C4E23F4A8',
 };
@@ -80,28 +81,25 @@ const getBridgeFee = async (sourceNetwork, destinationNetwork, tokenAddress, amo
         const fees = await socketContract.estimateFees(routeData);
         
         logger.info(`Socket Protocol estimated fees: ${ethers.utils.formatEther(fees)} ETH`);
-        return {
-          feeAmount: fees,
-          sourceInfo: routeData
-        };
+        return fees; // Return just the fee amount, not an object
       } catch (socketError) {
         logger.warn(`Failed to get Socket Protocol fees, trying Across: ${socketError.message}`);
         
         // Fall back to Across if enabled
         if (config.bridges.across.enabled) {
-          return await getAcrossFees(sourceNetwork, destinationNetwork, tokenAddress, amount);
+          const acrossFees = await getAcrossFees(sourceNetwork, destinationNetwork, tokenAddress, amount);
+          return acrossFees.feeAmount; // Return just the fee amount
         }
         
         // Default fallback
-        return {
-          feeAmount: ethers.BigNumber.from(amount).mul(5).div(1000), // 0.5%
-          relayerFeePct: '5000000000000000', // 0.5% in Across format
-          quoteTimestamp: Math.floor(Date.now() / 1000)
-        };
+        const fallbackFee = ethers.BigNumber.from(amount).mul(5).div(1000); // 0.5%
+        logger.info(`Using fallback fee amount: ${ethers.utils.formatEther(fallbackFee)} ETH`);
+        return fallbackFee;
       }
     } 
     else if (config.bridges.across.enabled) {
-      return await getAcrossFees(sourceNetwork, destinationNetwork, tokenAddress, amount);
+      const acrossFees = await getAcrossFees(sourceNetwork, destinationNetwork, tokenAddress, amount);
+      return acrossFees.feeAmount; // Return just the fee amount
     }
     else {
       throw new Error('No bridge provider enabled');
@@ -109,11 +107,9 @@ const getBridgeFee = async (sourceNetwork, destinationNetwork, tokenAddress, amo
   } catch (error) {
     logger.error(`Failed to estimate bridge fee: ${error.message}`);
     // Default to a conservative 0.5% fee
-    return {
-      feeAmount: ethers.BigNumber.from(amount).mul(5).div(1000), // 0.5%
-      relayerFeePct: '5000000000000000', // 0.5% in Across format
-      quoteTimestamp: Math.floor(Date.now() / 1000)
-    };
+    const fallbackFee = ethers.BigNumber.from(amount).mul(5).div(1000); // 0.5%
+    logger.info(`Using fallback fee amount: ${ethers.utils.formatEther(fallbackFee)} ETH`);
+    return fallbackFee;
   }
 };
 
@@ -125,28 +121,42 @@ const getAcrossFees = async (sourceNetwork, destinationNetwork, tokenAddress, am
     
     logger.info(`Querying Across API for suggested fees: token=${tokenAddress}, destinationChainId=${destinationChainId}, amount=${amount}`);
     
+    // Format the amount properly for the API
+    // The API might expect the amount in a different format, so let's try a more standard format
+    const amountStr = amount.toString();
+    
     // Construct Across API URL for suggested fees
-    const apiUrl = `https://across.to/api/suggested-fees?token=${tokenAddress}&destinationChainId=${destinationChainId}&amount=${amount}&originChainId=${originChainId}`;
+    const apiUrl = `https://across.to/api/suggested-fees?token=${tokenAddress}&destinationChainId=${destinationChainId}&amount=${amountStr}&originChainId=${originChainId}`;
     
-    const response = await axios.get(apiUrl);
-    const feeData = response.data;
-    
-    logger.info(`Across API returned fees: ${JSON.stringify(feeData)}`);
-    
-    // Extract the relayer fee from the response
-    // relayFeePct includes LP fee in the latest version
-    const relayerFeeBps = ethers.BigNumber.from(feeData.relayFeePct);
-    
-    // Calculate fee amount based on percentage (relayFeePct is in bps where 1e18 = 100%)
-    const feeAmount = amount.mul(relayerFeeBps).div(ethers.BigNumber.from('1000000000000000000'));
-    
-    logger.info(`Calculated fee amount: ${ethers.utils.formatEther(feeAmount)} ETH`);
-    
-    return {
-      feeAmount,
-      relayerFeePct: feeData.relayFeePct,
-      quoteTimestamp: feeData.timestamp
-    };
+    try {
+      const response = await axios.get(apiUrl);
+      const feeData = response.data;
+      
+      logger.info(`Across API returned fees: ${JSON.stringify(feeData)}`);
+      
+      // Extract the relayer fee from the response
+      // relayFeePct includes LP fee in the latest version
+      const relayerFeeBps = ethers.BigNumber.from(feeData.relayFeePct);
+      
+      // Calculate fee amount based on percentage (relayFeePct is in bps where 1e18 = 100%)
+      const feeAmount = amount.mul(relayerFeeBps).div(ethers.BigNumber.from('1000000000000000000'));
+      
+      logger.info(`Calculated fee amount: ${ethers.utils.formatEther(feeAmount)} ETH`);
+      
+      return {
+        feeAmount,
+        relayerFeePct: feeData.relayFeePct,
+        quoteTimestamp: feeData.timestamp
+      };
+    } catch (axiosError) {
+      logger.error(`Across API request failed: ${axiosError.message}`);
+      logger.error(`API URL: ${apiUrl}`);
+      if (axiosError.response) {
+        logger.error(`Status: ${axiosError.response.status}`);
+        logger.error(`Data: ${JSON.stringify(axiosError.response.data)}`);
+      }
+      throw new Error(`Across API request failed: ${axiosError.message}`);
+    }
   } catch (error) {
     logger.error(`Error querying Across API: ${error.message}`);
     // Fall back to a conservative estimate

@@ -50,7 +50,17 @@ const calculateProfitability = async (token, buyNetwork, sellNetwork, buyPrice, 
     );
     
     // Calculate how much ETH we'll get from selling on target network
-    const expectedSellAmount = expectedBuyAmount.sub(bridgeFee);
+    let bridgeFeeAmount;
+    if (ethers.BigNumber.isBigNumber(bridgeFee)) {
+      bridgeFeeAmount = bridgeFee;
+    } else if (bridgeFee && bridgeFee.feeAmount && ethers.BigNumber.isBigNumber(bridgeFee.feeAmount)) {
+      bridgeFeeAmount = bridgeFee.feeAmount;
+    } else {
+      // Default fallback
+      bridgeFeeAmount = expectedBuyAmount.mul(5).div(1000); // 0.5%
+      logger.warn(`Using fallback bridge fee calculation: ${ethers.utils.formatEther(bridgeFeeAmount)} ETH`);
+    }
+    const expectedSellAmount = expectedBuyAmount.sub(bridgeFeeAmount);
     const expectedEthFromSell = expectedSellAmount.mul(ethers.utils.parseEther(sellPrice.priceInEth.toString())).div(ethers.utils.parseEther('1'));
     
     // Estimate gas costs for selling on target network
@@ -108,7 +118,7 @@ const calculateProfitability = async (token, buyNetwork, sellNetwork, buyPrice, 
       expectedEthFromSellETH: ethers.utils.formatEther(expectedEthFromSell),
       estimatedGasCostBuy,
       estimatedGasCostSell,
-      bridgeFee: ethers.utils.formatEther(bridgeFee),
+      bridgeFee: ethers.utils.formatEther(bridgeFeeAmount),
       bridgeBackFee: ethers.utils.formatEther(bridgeBackFee),
       totalCostsWei: totalCosts,
       totalCostsETH: ethers.utils.formatEther(totalCosts),
@@ -151,14 +161,14 @@ const estimateGasCost = async (network, fromToken, toToken, amount) => {
 };
 
 // Calculate the optimal trade size for maximum profit
-const calculateOptimalTradeSize = (buyPrice, sellPrice, gasCostBuy, gasCostSell, bridgeFee, bridgeBackFee) => {
+const calculateOptimalTradeSize = (buyPrice, sellPrice, gasCostBuy, gasCostSell, bridgeFeeAmount, bridgeBackFee) => {
   try {
     // Convert all inputs to consistent units (ETH)
     const buyPriceEth = parseFloat(buyPrice);
     const sellPriceEth = parseFloat(sellPrice);
     const gasCostBuyEth = parseFloat(ethers.utils.formatEther(gasCostBuy));
     const gasCostSellEth = parseFloat(ethers.utils.formatEther(gasCostSell));
-    const bridgeFeeEth = parseFloat(ethers.utils.formatEther(bridgeFee));
+    const bridgeFeeEth = parseFloat(ethers.utils.formatEther(bridgeFeeAmount));
     const bridgeBackFeeEth = parseFloat(ethers.utils.formatEther(bridgeBackFee));
     
     // Fixed costs

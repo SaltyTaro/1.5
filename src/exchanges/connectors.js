@@ -41,6 +41,10 @@ class BaseExchangeConnector {
     return true; // Override in child classes if necessary
   }
   
+  createUnsignedSwapTransaction(fromToken, toToken, amount, minAmountOut) {
+    throw new Error('Method not implemented');
+  }
+
   // Get the exchange name
   getName() {
     return 'BaseExchange';
@@ -136,6 +140,36 @@ class UniswapConnector extends BaseExchangeConnector {
     }
   }
   
+  async createUnsignedSwapTransaction(fromToken, toToken, amount, minAmountOut, feeTier = 3000) {
+    try {
+      logger.info(`Creating unsigned Uniswap transaction for ${amount} ${fromToken} to ${toToken}`);
+      
+      // Prepare the transaction data
+      const routerInterface = new ethers.utils.Interface(this.routerABI);
+      const data = routerInterface.encodeFunctionData('exactInputSingle', [
+        [
+          fromToken, // tokenIn
+          toToken, // tokenOut
+          feeTier, // fee
+          this.signer ? this.signer.address : ethers.constants.AddressZero, // recipient
+          amount, // amountIn
+          minAmountOut, // amountOutMinimum
+          0, // sqrtPriceLimitX96 (0 = no limit)
+        ]
+      ]);
+      
+      // Return the unsigned transaction
+      return {
+        to: this.routerAddress,
+        data: data,
+        value: fromToken === ethers.constants.AddressZero ? amount : 0,
+      };
+    } catch (error) {
+      logger.error(`Failed to create Uniswap transaction: ${error.message}`);
+      throw error;
+    }
+  }
+
   // Execute a token swap
   async executeSwap(fromToken, toToken, amount, minAmountOut, feeTier = 3000) {
     try {
@@ -262,6 +296,71 @@ class SushiswapConnector extends BaseExchangeConnector {
     }
   }
   
+  async createUnsignedSwapTransaction(fromToken, toToken, amount, minAmountOut) {
+    try {
+      logger.info(`Creating unsigned Sushiswap transaction for ${amount} ${fromToken} to ${toToken}`);
+      
+      // Set deadline to 10 minutes from now
+      const deadline = Math.floor(Date.now() / 1000) + 600;
+      
+      // Create the token path
+      const path = [fromToken, toToken];
+      
+      // Make sure we're not trying to swap a token for itself
+      if (fromToken.toLowerCase() === toToken.toLowerCase()) {
+        throw new Error("Cannot swap a token for itself");
+      }
+      
+      // Prepare the transaction data
+      const routerInterface = new ethers.utils.Interface(this.routerABI);
+      
+      let data;
+      if (fromToken === ethers.constants.AddressZero) {
+        // ETH -> Token
+        const wethAddress = tokens.nativeTokens[this.network].addresses.weth;
+        path[0] = wethAddress;
+        
+        data = routerInterface.encodeFunctionData('swapExactETHForTokens', [
+          minAmountOut,
+          path,
+          this.signer ? this.signer.address : ethers.constants.AddressZero,
+          deadline
+        ]);
+      } else if (toToken === ethers.constants.AddressZero) {
+        // Token -> ETH
+        const wethAddress = tokens.nativeTokens[this.network].addresses.weth;
+        path[1] = wethAddress;
+        
+        data = routerInterface.encodeFunctionData('swapExactTokensForETH', [
+          amount,
+          minAmountOut,
+          path,
+          this.signer ? this.signer.address : ethers.constants.AddressZero,
+          deadline
+        ]);
+      } else {
+        // Token -> Token
+        data = routerInterface.encodeFunctionData('swapExactTokensForTokens', [
+          amount,
+          minAmountOut,
+          path,
+          this.signer ? this.signer.address : ethers.constants.AddressZero,
+          deadline
+        ]);
+      }
+      
+      // Return the unsigned transaction
+      return {
+        to: this.routerAddress,
+        data: data,
+        value: fromToken === ethers.constants.AddressZero ? amount : 0,
+      };
+    } catch (error) {
+      logger.error(`Failed to create Sushiswap transaction: ${error.message}`);
+      throw error;
+    }
+  }
+
   // Execute a token swap
   async executeSwap(fromToken, toToken, amount, minAmountOut) {
     try {
